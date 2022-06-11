@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useReducer, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useContext, useReducer, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -23,8 +22,6 @@ const reducer = (state, action) => {
 };
 
 export default function ProfileScreen() {
-   const navigate = useNavigate();
-
    const { state, dispatch: ctxDispatch } = useContext(Store);
    const { userInfo } = state;
    const [name, setName] = useState(userInfo ? userInfo.name : '');
@@ -35,12 +32,6 @@ export default function ProfileScreen() {
    const [{ loadingUpdate }, dispatch] = useReducer(reducer, {
       loadingUpdate: false,
    });
-
-   useEffect(() => {
-      if (!userInfo) {
-         navigate('/signin');
-      }
-   }, [userInfo, navigate]);
 
    const submitHandler = async (e) => {
       e.preventDefault();

@@ -22,8 +22,6 @@ const reducer = (state, action) => {
 };
 
 export default function HomeScreen() {
-   // const [products, setProducts] = useState([]);
-
    const [{ loading, error, products }, dispatch] = useReducer(reducer, {
       loading: true,
       error: '',
@@ -39,7 +37,6 @@ export default function HomeScreen() {
          } catch (err) {
             dispatch({ type: 'FETCH_FAILED', payload: getError(err) });
          }
-         // setProducts(result.data);
       };
       fetchData();
    }, []);
@@ -49,7 +46,7 @@ export default function HomeScreen() {
          <Helmet>
             <title>Amazona</title>
          </Helmet>
-         <h1>Featured Producs</h1>
+         <h1>Featured Products</h1>
          <div className="products">
             {loading ? (
                <LoadingBox />

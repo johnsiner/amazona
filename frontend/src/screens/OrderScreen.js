@@ -66,9 +66,7 @@ export default function OrderScreen() {
             dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
          }
       };
-      if (!userInfo) {
-         navigate('/signin');
-      }
+
       if (!order._id || successPay || (order._id && order._id !== orderId)) {
          fetchOrder();
          if (successPay) {
